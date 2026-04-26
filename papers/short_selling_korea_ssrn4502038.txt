@@ -1,0 +1,118 @@
+Foreigners' Short Selling in the Korean Stock Market around the Financial Crisis
+Sang B. Hahn (Kyonggi University), Sehoon Kwon (Sangmyung University), Yeongseop Rhee (Seoul National University)
+Published in: East Asian Economic Review, vol. 27, no. 2 (June 2023), pp. 145-176
+DOI: https://dx.doi.org/10.11644/KIEP.EAER.2023.27.2.421
+SSRN: 4502038
+
+ABSTRACT
+This paper investigates short selling behavior, particularly by foreign investors, during event days of non-normal times on an intraday basis in the Korean stock market around the global financial crisis. Although, in the several subsamples, we cannot exclude the predatory short-selling possibility, we did not find any conclusive evidence of abusive short selling behaviors in the overall intraday trading activities. While foreign investors demonstrate higher levels of participation in short-sale trading, their impact on price declines is not as pronounced compared to the effects of pure selling. Following the lift of the short-sale ban, foreign investors appear to engage in long selling trading more frequently, and their influence on price changes primarily stems from long selling rather than short selling compared to the past.
+
+Keywords: Short Selling, Financial Crisis, Foreign Investors, Price reversals, Short-sale Ban
+JEL Classification: G12, G14, G15
+
+INSTITUTIONAL BACKGROUND
+
+Short-Sale Ban in Korea:
+- October 1, 2008: Short selling banned on ALL stocks (amid global financial crisis)
+- June 1, 2009: Ban lifted for NON-FINANCIAL firms only
+- Data source: Capital Market Institute (KCMI) and KRX (Korea Exchange)
+
+DATA
+- Raw sample: 773 stocks, 688,652 stock-day observations (2007-2010)
+- Filtering criteria:
+  * Exclude stocks traded < 240 days/year
+  * Exclude stocks with initial year price < KRW 1,000
+  * Exclude stocks with trading suspensions
+- Final sample: 540,896 stock-day observations, 704 stocks
+
+FIGURE 1: Stock Trading Volume and Short-sales (2004-2010)
+- Trading volume showed consistent upward trend until global financial crisis
+- Short-sale volume rose steadily until October 2008 ban
+- After ban: negligible short-sale activity until June 2009
+- Post-ban rebound: short-sale volume recovered but remained below pre-crisis levels
+
+KEY FINDINGS
+
+1. FOREIGN INVESTOR PARTICIPATION IN SHORT SELLING
+- Foreign investors demonstrate higher levels of participation in short-sale trading than domestic investors
+- However, their price impact through short selling is LESS pronounced than through pure (long) selling
+- Post-ban: foreign investors shifted toward non-short-sale (long selling) trading
+
+2. PREDATORY SHORT SELLING ANALYSIS
+- In several subsamples: cannot exclude predatory short-selling possibility
+- Overall intraday trading: NO conclusive evidence of abusive short selling behaviors
+- Foreign short sellers act as CONTRARIAN traders (not momentum traders) in the Korean market
+  → Lagged coefficient for foreign investor's abnormal short-sale: significantly positive
+
+3. AGGRESSIVENESS OF SHORT SALES
+- Non-short-sales (long selling) tend to be MORE aggressive than short sales
+- Aggressive seller-initiated trading by non-short sellers → negative order imbalances → further price declines
+
+4. REGRESSION MODELS (Price Change Analysis)
+
+Model (A): Baseline — short-sale order imbalance only
+Model (B): Adds foreigners' short-sale order imbalance (oib^F) and non-short-sale (noib)
+Model (C): Full model — incorporates both short-sales and non-short-sales of foreigners
+
+Key variables:
+- oib^F: order imbalance of foreigners' short sales
+- noib: order imbalance of non-short-sales (long selling)
+- asv^F: foreigners' abnormal short-sale volume
+- nav: net abnormal volume
+
+Results from Model (C):
+- Coefficients of both oib (short-sale) and noib (non-short-sale) order imbalances: positive and HIGHLY significant
+- noib coefficient >> oib coefficient → non-short-sale selling pressure has larger price impact
+- nav coefficient remains statistically significant → both pure selling AND other channels matter
+- Lagged asv^F coefficient: significantly positive → foreign short sellers are contrarian traders
+
+5. TABLE 4C: FOREIGNER'S ABNORMAL SHORT-SALE during Large Price Reversals
+
+Classification by Firm Size and Individual Trading Activity:
+Sigma groups: [2:3]σ, [3:4]σ, [4:5]σ, [5:∞]σ
+
+Small Firms, Low Individual Trading:
+  pre-rebound:  1.6487** | 0.0349 | 0.4626 | 1.1864
+  post-rebound: 3.1703** | 7.5206** | 6.7198* | 2.8793
+
+Small Firms, High Individual Trading:
+  pre-rebound:  1.8770** | 1.7346*** | 0.4127 | 2.2786**
+  post-rebound: 2.1346*** | 3.1802*** | 4.1847** | 3.6303**
+
+Large Firms, Low Individual Trading:
+  pre-rebound:  0.0950 | -0.0006 | 0.3020 | 1.3115**
+  post-rebound: 0.7057*** | 0.9996*** | 1.5571*** | 0.6553**
+
+Large Firms, High Individual Trading:
+  pre-rebound:  1.0099** | 0.5300 | 1.7309 | 1.1558
+  post-rebound: 0.5812** | 1.8167** | 2.5572** | 1.7500
+
+Note: Firm size measured by market value at end of 2006.
+Individual trading activity = (individual buy + sell volume) / (total volume × 2) in 2006.
+
+6. PRE-BAN vs. POST-BAN PERIOD ANALYSIS (Table 8)
+
+Pre-ban period (before October 1, 2008):
+- oib^F coefficient: larger (stronger pure selling channel)
+- asv^F: NOT significant in pre-ban period
+
+Post-ban period (after June 1, 2009):
+- oib^F coefficients SMALLER → decrease in pure selling channel influence
+- asv^F: SIGNIFICANTLY POSITIVE in post-ban period
+- Foreign investors more likely to use NON-short-sale trading post-ban
+- Foreign investors' price influence comes MORE through long selling than short selling
+
+KEY CONCLUSIONS
+1. No conclusive evidence of widespread abusive/predatory short selling by foreigners overall
+2. Foreign investors' price impact comes primarily from long (non-short) selling, not short selling
+3. Foreign short sellers behave as contrarians, not momentum chasers
+4. Short-sale ban effectively shifted foreign investor behavior: even post-ban, foreigners rely more on long selling
+5. The ban had lasting effects on trading behavior beyond the ban period itself
+
+REFERENCES (selected)
+- Amihud (2002): Illiquidity and Stock Returns
+- Beber & Pagano (2013): Short-selling Bans around the World — Journal of Finance 68(1): 343-381
+- Boehmer, Jones & Zhang (2009): Shackling Short Sellers: The 2008 Shorting Ban — Review of Financial Studies 26(6): 1363-1400
+- Brunnermeier & Pederson (2005): Predatory Trading — Journal of Finance 60(4): 1825-1863
+- Brunnermeier & Oehmke (2014): Predatory Short Selling — Review of Finance 18(6): 2153-2195
+- Choe, Kho & Stulz (1999): Do Foreign Investors Destabilize Stock Markets? Korean Experience 1997 — Journal of Financial Economics 54(2): 227-264

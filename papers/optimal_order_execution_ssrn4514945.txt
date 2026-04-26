@@ -1,0 +1,46 @@
+Optimal Order Execution Using After-Hour Fixed-Price Trading
+Nian Yang, Jianchang Zhu, Hui Lin
+Nanjing University, School of Business
+SSRN: 4514945
+
+ABSTRACT
+Exchanges, including Nasdaq's Extended Trading Close introduced in 2022, have implemented after-hour fixed-price trading (fixed-price session) to enhance liquidity. Although the fixed trading price eliminates temporary price impact, execution risk remains. Empirical evidence indicates that the disclosed order imbalances in the fixed-price session can have a permanent price impact on future asset prices. This paper proposes a novel order execution model capturing these features: liquidating in the fixed-price session and transferring remaining position to the regular session.
+
+KEY CONCEPTS
+
+1. FIXED-PRICE SESSION vs. REGULAR SESSION
+- Fixed-price orders: traded at a specific time after market close, price fixed at closing price
+- Regular session: market orders, limit orders, hidden orders — all at variable prices
+- Dark pools: opacity, no price impact, but execution uncertainty; adverse selection (Kratz & Schöneborn 2018) increases effective costs
+- Fixed-price session difference from dark pools: price is fixed (not derived from regular session discovery), disclosed imbalance creates permanent price impact
+
+2. KEY FEATURES OF THE MODEL
+- Permanent price impact from disclosed order imbalances in fixed-price session
+- No temporary price impact (fixed price eliminates it)
+- Execution risk persists (orders may not fully fill)
+- Optimal strategy: split execution between fixed-price session and regular session
+
+3. NOVEL OPTIMAL EXECUTION STRATEGY
+"Opportunistic crossing":
+- Submit portion of inventory to fixed-price session (at closing price, no temporary impact)
+- Transfer unfilled remainder to regular session (accepts temporary impact)
+- Introduction of fixed-price session reduces overall execution costs
+- This result is robust across various model settings
+
+4. RELATION TO LITERATURE
+
+First strand — optimal execution with limit/market orders:
+- Guilbaud & Pham (2013), Cartea & Jaimungal (2015), Guo et al. (2017), Cont & Kukanov (2017)
+- Chen et al. (2018): hidden orders + market/limit orders
+- This paper extends by adding fixed-price order type
+
+Second strand — dark pool models:
+- Horst & Naujokat (2014), Kratz & Schöneborn (2014, 2015): market + dark pool orders simultaneously
+- Dark pools: no price impact but execution uncertainty → submit entire inventory to dark pool
+- Kratz & Schöneborn (2018): adverse selection in dark pools → reduces dark pool order size
+- This paper: fixed-price orders have disclosed imbalance → permanent price impact (unlike dark pools)
+
+5. PRACTICAL RELEVANCE
+- Nasdaq Extended Trading Close (2022): real-world implementation of fixed-price session
+- Provides theoretical justification for "opportunistic crossing" strategies observed in practice
+- Traders benefit from using fixed-price session to reduce temporary price impact while managing execution risk

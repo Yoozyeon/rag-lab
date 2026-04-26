@@ -1,0 +1,111 @@
+Microstructure-Based Private Information and Institutional Return Predictability
+Xuchu Sun (Nanjing University), Jinling Na (Nanjing University), Tangrong Li (Nanjing Audit University)
+SSRN: 5046683
+
+ABSTRACT
+Using tick-by-tick transaction data from the Chinese stock market (Jan 2014 – Jun 2019, 3,385 firms), this paper introduces microstructure-based private information as a distinct dimension of institutional investors' informational advantage, alongside traditional value-based private information. In retail-dominated markets, microstructure-based private information contributes nearly as much (~1/3 of total) as value-based private information to institutional return predictability.
+
+DATA
+- Source: JoinQuant (tick-by-tick transaction data)
+- Period: January 2014 – June 2019
+- Universe: 3,385 listed firms (SHSE + SZSE), 2,725,358 daily observations
+- Fields: timestamp, price, volume, direction (B/S), trader IDs, order book, cancellations
+- Supplementary: CSMAR database (daily trading + firm characteristics)
+- Order classification: Lee & Radhakrishna (2000) size algorithm — cutoffs 40,000 CNY / 200,000 CNY
+
+KEY VARIABLES
+
+1. Institutional Order Imbalance (IOIB)
+IOIBvol_{i,t} = (mibvol - misvol) / (mibvol + misvol)   [Eq.1]
+IOIBnum_{i,t} = (mibnum - misnum) / (mibnum + misnum)   [Eq.2]
+Mean IOIBvol = -0.1216 (institutions prefer limit orders when buying)
+
+2. Institutional-Retail Order Imbalance (IROIB) — novel metric
+IROIBvol_{i,t} = (rbivol - rsivol) / osvol   [Eq.3]
+IROIBval_{i,t} = (rbival - rsival) / osval   [Eq.4]
+Mean IROIBvol = +0.0018 (retail investors are net buyers from institutions on average)
+
+MAIN FINDINGS
+
+1. IOIB PREDICTS STOCK RETURNS (Section 3.1)
+Portfolio tests (quintile sort, weekly rebalancing):
+- IOIBvol L/S: value-weighted 2.2 bps/week (t=3.83), equal-weighted 3.1 bps/week (t=4.37)
+- IOIBnum L/S: value-weighted 2.1 bps/week, equal-weighted 3.6 bps/week (t=8.43)
+- Significant after CAPM, FF3, FF5 adjustments
+
+Fama-MacBeth regressions:
+- IOIBvol coeff = 0.0085 (t=7.50, full controls)
+- IOIBnum coeff = 0.0095 (t=8.42, full controls)
+- Predictability significant for ~6 weeks; portfolio significance ~10 weeks
+
+2. TWO-STAGE DECOMPOSITION (Section 3.3)
+
+Stage 1 — Decompose IOIB [Eq.7]:
+IOIB_{i,w} = c1·IOIB_{i,w-1} + c2·Ret_{i,w-T} + c3·IROIB_{i,w-T} + residual
+
+Four components:
+- IOIB(persistence) = ĉ1 · IOIB_{w-1}      [herding/order-splitting]
+- IOIB(contrarian) = ĉ2 · Ret_{w-T}         [contrarian trading]
+- IOIB(microstructure) = ĉ3 · IROIB_{w-T}   [micro-level interactions — novel]
+- IOIB(other) = intercept + residual          [value-based private info]
+
+IROIB coefficients in Stage 1: all significantly negative
+(more retail buying from institutions → institutions reduce buying next period)
+
+Stage 2 — Predict returns [Eq.10]:
+Ret_{i,w+1} = d1·IOIB(persistence) + d2·IOIB(contrarian) + d3·IOIB(microstructure) + d4·IOIB(other) + controls
+
+Results (Table 7):
+- IOIB(microstructure) coeff = 0.1082*** (IROIBvol), 0.1344*** (IROIBval)
+- All four components significant and positive
+
+Contribution calculation (IQ range × coefficient):
+IROIBvol decomposition:
+- IOIB(microstructure): 31.42% contribution
+- IOIB(other) [value-based]: 34.06% contribution
+IROIBval decomposition:
+- IOIB(microstructure): 33.30% contribution
+- IOIB(other): 32.27% contribution
+→ Microstructure-based ≈ value-based in importance
+
+Longer horizons (Table 8):
+- IOIB(microstructure) significant up to 4 weeks ahead
+
+3. FURTHER ANALYSES
+
+A. Earnings Announcements (Table 9):
+- IOIB(microstructure) contributes 10-15% to predicting CAR around earnings
+- IOIB(other) contributes ~60% around earnings (firm fundamentals dominate for earnings)
+
+B. Order Types (Table 10):
+- Marketable retail orders: IOIB(microstructure) significant, ~24-26% contribution
+- Limit retail orders: NOT significant (~0.04-0.06% contribution)
+- Institutions exploit information from impatient retail traders
+
+C. Retail Subgroups (Table 11):
+- Small retail investors: ~15-17% contribution (more important)
+- Large retail investors: ~10-11% contribution
+- Institutions monitor irrational small retail behavior more closely
+
+D. Macro-level Trading Environments (Table 12):
+- Bear markets: IOIB(microstructure) contribution ~20-23% (significant)
+- Bull markets: ~0.03-0.05% (NOT significant)
+- In-between volatility: ~25-29% contribution (significant)
+- Extreme volatility: ~0.07-0.08% (NOT significant)
+- Low iVIX: ~21-25% contribution; High iVIX: ~0.10-0.12% (not significant)
+
+E. Micro-level: Lottery Stocks (Table 13):
+- High lottery features (idiosyncratic skewness/volatility/max return/jackpot prob): 30-39% contribution
+- Low lottery features: ~0.05-0.12% (NOT significant)
+- Explains mutual fund preference for lottery stocks via microstructure info
+
+ROBUSTNESS
+- VIF < 2 for all components (no multicollinearity)
+- Alternative IROIB denominators (trading volume/value): consistent results
+- Modified order size algorithm (Li et al. 2024, multiples of 500 shares): consistent
+- Open-to-close returns: consistent
+
+CONTRIBUTIONS
+1. First paper to quantify microstructure-based private information's role in institutional return predictability
+2. New evidence on institutional-retail investor dynamics
+3. First study on sources of institutional predictive power in retail-dominated markets

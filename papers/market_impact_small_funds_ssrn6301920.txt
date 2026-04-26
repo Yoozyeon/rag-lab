@@ -1,0 +1,103 @@
+Market Impact Models for Small Funds: Practical Execution Alpha, Intraday Liquidity Dynamics, and the Microstructure of Trading Cost
+Divyanshu Verma
+Verma Research Capital (VRC)
+SSRN: 6301920
+
+ABSTRACT
+For a small hedge fund, execution is not an operational afterthought but a primary source of edge that compounds silently across every trade. This paper develops a comprehensive quantitative framework for understanding, measuring, and minimising market impact in the context of small fund operations (10-200M USD scale).
+
+1. STRUCTURAL MODELS OF MARKET IMPACT
+
+A. Square-Root Law
+I(Q) = η · σ · sqrt(Q/V)
+- η: dimensionless constant ~0.5 to 1.0
+- Q: trade size, V: average daily volume, σ: daily volatility
+- Total daily impact (N trades): N · η · σ · sqrt(Q/V) · P
+- Implication: cumulative impact across many small trades is material even when individual impact is tiny
+
+B. Almgren-Chriss Optimal Execution Framework
+Trade-off: executing too slowly (price risk) vs. too quickly (market impact)
+Three cost components:
+1. Permanent cost = γ · X² (independent of schedule)
+2. Temporary cost = η · Σ(x_k²/Δt)
+3. Risk cost = λ · σ² · Δt · Σ(X̄_k²)
+Optimal strategy: x_k* = X · sinh(κ(T-t_k)) / sinh(κT) · κΔt
+where κ = sqrt(λσ²/η) = urgency parameter
+Key insight: optimal execution speed is dynamic, not fixed.
+
+C. Transient Impact (Gatheral 2010)
+ΔP_t = ∫ G(t-s) · ẋ_s ds, where G(τ) = λe^(-ρτ)
+- Price pressure decays exponentially with rate ρ
+- Self-impact cost for mean-reversion strategies
+- Optimal rebalancing frequency: f* = f_signal · min(1, sqrt(ρσ²/η·f_signal·q̄²))
+
+2. INTRADAY LIQUIDITY DYNAMICS
+
+A. U-Shaped Intraday Pattern
+S(t) = S_min + (S_open - S_min)·e^(-α₁t) + (S_close - S_min)·e^(-α₂(T-t))
+- Spreads widest at open and close, narrowest mid-session
+- Volume highest at open and close
+
+B. Intraday Depth
+D_eff(Q,c) = Σ q_p for |p - mid| ≤ c · mid/10000
+- Monitor effective depth in real time
+
+C. Short-Term Volatility
+VolRatio_t = σ̂_{t,5min} / σ̄_{5min}
+- VolRatio > 1.5: defer non-urgent executions
+
+3. VRC EXECUTION STATE MODEL (ESM)
+
+Four inputs:
+1. Relative bid-ask spread: S̃_t = S_t / S̄
+2. Relative order book depth: D̃_t = D_t^eff / D̄^eff
+3. Short-term volatility ratio: VolRatio_t
+4. Signed order flow imbalance: OFI_t
+
+EQS_t = 0.30·Ŝ_t + 0.25·(2-D̃_t) + 0.25·VolRatio_t + 0.20·|OFI_t|
+
+Regimes:
+- Liquid (EQS < 0.8): full size, market/limit at spread
+- Normal (0.8-1.2): passive limits, 90% of target
+- Thin (1.2-1.6): reduce urgency, 70% of target
+- Stressed (>1.6): only if time-critical, 40% of target
+
+Regime-conditioned cost:
+Ĉ(Q, regime) = S_t/2 + η(regime)·σ_t·sqrt(Q/V) + 1[Q>D_eff]·ξ·(Q-D_eff)²/D_eff
+
+4. EQUITY MARKET EXECUTION
+- True cost example: 2M position, 2.9% of ADV → ~7 bps one-way, ~14 bps round-trip = 35% of gross alpha consumed
+- Passive vs. Aggressive: prefer passive when P(fill) > Δp/(Δp + S/2)
+- At-minimum-tick stocks: different order book dynamics
+
+5. INDEX FUTURES EXECUTION
+- Best liquidity: US equity open (9:30-10:30 AM ET) and cash close (3:30-4:00 PM)
+- Roll cost reduction: roll 1-2 weeks early or 1 week late → saves 3-8 bps per roll (~12-32 bps/year)
+- Optimal rebalancing < signal frequency when transient decay is slow
+
+6. OPTIONS EXECUTION
+C_option = S_IV·V/2 + κ_IV·D/(V·OI_{K,T})
+- Liquidity-adjusted fair value: V_adj(K) = V_BS(K) - C_option(K)
+- Event-driven spread: S_IV(τ) = S̄_IV·(1 + ψ·e^(-μτ))
+- Rule: no options positions within 15 min of Tier-1 announcements
+
+7. PATH-DEPENDENT ASYMMETRY (Entry vs. Exit)
+E[C_total] = Σ P(entry in r₁, exit in r₂)·[C(Q,r₁) + C(Q,r₂)]
+- Q_adj = Q_naive · (μ - C_entry - E[C_exit|adverse]) / (μ - 2C̃)
+
+8. EXECUTION ALPHA
+α_exec = 2 · δC · N · P·Q/NAV
+Example: 500 trades/yr, 4 bps improvement → 16 bps/year execution alpha
+SR_new = SR_old + α_exec/σ₀
+- Execution alpha has near-zero volatility → disproportionate Sharpe improvement
+- Abstention is optimal when μ_signal < C_entry + E[C_exit]
+
+9. POSITION SIZING
+Kelly with execution costs: f* = (μ - C_total)/σ²
+Liquidity-adjusted max size: Q_max^liq = V · τ_max · p_max
+- VRC caps: 5% ADV for equities, 2% for index futures (non-peak hours)
+
+10. VRC OPPORTUNISTIC EXECUTION ALGORITHM (OEA)
+w(EQS_t) = (2 - EQS_t)^β / Σ(2 - EQS_s)^β
+- Front-loads execution in best-quality windows
+- Falls back to aggressive execution at T_max deadline
